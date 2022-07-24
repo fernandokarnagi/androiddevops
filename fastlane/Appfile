@@ -1,0 +1,2 @@
+json_key_file("/Users/fernandokarnagi/Work/Workspace/WorkspaceDevOps/mobile/credentials/pc-api-7967713687304598860-665-506f686a6672.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("monster.karnagi.androiddevops") # e.g. com.krausefx.app

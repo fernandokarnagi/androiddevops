@@ -9,15 +9,26 @@ android {
         applicationId "monster.karnagi.androiddevops"
         minSdk 21
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
 
+        signingConfigs {
+            release {
+                // You need to specify either an absolute path or include the
+                // keystore file in the same directory as the build.gradle file.
+                storeFile file("keystore.jks")
+                storePassword "password"
+                keyAlias "me"
+                keyPassword "password"
+            }
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

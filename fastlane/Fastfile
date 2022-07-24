@@ -1,0 +1,60 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Build"
+  lane :build do
+    gradle(task: "build")
+    # sh "your_script.sh"
+    # You can also use other beta testing services here
+  end
+
+  desc "Bundle"
+  lane :bundle do
+    gradle(task: "bundle")
+      # sh "your_script.sh"
+      # You can also use other beta testing services here
+  end
+
+  desc "Some Command"
+  lane :somecommand do
+    sh "ls"
+    UI.success "Successfully finished processing (usually green)"
+    UI.password("Your password please: ") # password inputs are hidden
+    # sh "your_script.sh"
+    # You can also use other beta testing services here
+  end
+
+  desc "Git Add"
+    lane :gitadd do
+      # git_add(path: "*", shell_escape: false)
+      puts "Hi there"
+    end
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    gradle(task: "clean assembleRelease")
+    gradle(task: "build")
+    gradle(task: "bundle")
+    upload_to_play_store(skip_upload_apk: true, skip_upload_aab: false)
+  end
+end
