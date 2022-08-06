@@ -1,0 +1,22 @@
+version: 0.2
+env:
+  variables:
+    build_version: "0.1"
+
+phases:
+  install:
+    commands:
+      - apt-get update
+  pre_build:
+    commands:
+      - echo "Pre Build"
+  build:
+    commands:
+      - echo "Building the application"
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
+artifacts:
+  files:
+    - gradle.properties
